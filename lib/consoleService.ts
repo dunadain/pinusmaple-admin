@@ -432,9 +432,9 @@ let doScheduleJob = function (args?: { service: ConsoleService, record: ModuleRe
  */
 let exportEvent = function (outer: ConsoleService, inner: MasterAgent | MonitorAgent, event: string) {
     inner.on(event, function () {
-        let args = Array.from(arguments);
+        let args = Array.from(arguments) as any;
         args.unshift(event);
-        outer.emit.apply(outer, [args[0], args.slice(1)]);
+        outer.emit.apply(outer, args);
     });
 };
 

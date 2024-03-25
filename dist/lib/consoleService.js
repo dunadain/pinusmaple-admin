@@ -340,7 +340,7 @@ let exportEvent = function (outer, inner, event) {
     inner.on(event, function () {
         let args = Array.from(arguments);
         args.unshift(event);
-        outer.emit.apply(outer, [args[0], args.slice(1)]);
+        outer.emit.apply(outer, args);
     });
 };
 /**
